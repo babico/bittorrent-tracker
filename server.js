@@ -336,7 +336,7 @@ class Server extends EventEmitter {
                 <div class="center">
                     <div class="second">Peers Seeding Only: ${stats.peersSeederOnly}</div>
                     <div class="second">Peers Leeching Only: ${stats.peersLeecherOnly}</div>
-                    <div class="second">Peers Seeding &; Leeching: ${stats.peersSeederAndLeecher}</div>
+                    <div class="second">Peers Seeding & Leeching: ${stats.peersSeederAndLeecher}</div>
                 </div>
                   
                 <div class="center">
