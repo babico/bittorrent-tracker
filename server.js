@@ -263,15 +263,95 @@ class Server extends EventEmitter {
           } else if (req.url === '/stats') {
             res.setHeader('Content-Type', 'text/html')
             res.end(`
-              <h1>${stats.torrents} torrents (${stats.activeTorrents} active)</h1>
-              <h2>Connected Peers: ${stats.peersAll}</h2>
-              <h3>Peers Seeding Only: ${stats.peersSeederOnly}</h3>
-              <h3>Peers Leeching Only: ${stats.peersLeecherOnly}</h3>
-              <h3>Peers Seeding & Leeching: ${stats.peersSeederAndLeecher}</h3>
-              <h3>IPv4 Peers: ${stats.peersIPv4}</h3>
-              <h3>IPv6 Peers: ${stats.peersIPv6}</h3>
-              <h3>Clients:</h3>
-              ${printClients(stats.clients)}
+              <html>
+                <head>
+                    <title>Tracker Stats</title>
+                    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">  
+                    <style>
+                      body{
+                        background-color: #222;
+                        color: #bbbbbb;
+                    }
+                    .center{
+                        margin: auto;
+                        text-align: center;
+                    }
+                    .first {
+                        background-color: #333;
+                        border-radius: 25px;
+                        padding: 20px;
+                        width: 90%;
+                        height: 20px;
+                        text-align: center;
+                        font-family: monospace;
+                        font-size: x-large;
+                        margin: 10px auto;
+                        display: block;
+                    }
+                    .second {
+                        background-color: #444;
+                        border-radius: 25px;
+                        padding: 20px;
+                        width: 27.75%;
+                        height: 20px;
+                        text-align: center;
+                        font-family: monospace;
+                        font-size: x-large;
+                        margin: 10px auto;
+                        display: inline-table;
+                    }
+                    .third {
+                        background-color: #444;
+                        border-radius: 25px;
+                        padding: 20px;
+                        width: 27.75%;
+                        height: 20px;
+                        text-align: center;
+                        font-family: monospace;
+                        font-size: x-large;
+                        margin: 10px auto;
+                        display: inline-table;
+                    }
+                    .fourth {
+                        background-color: #444;
+                        border-radius: 25px;
+                        padding: 20px;
+                        width: 27.75%;
+                        height: 20%;
+                        text-align: left;
+                        font-family: monospace;
+                        font-size: x-large;
+                        margin: 10px auto;
+                        display: inline-table;
+                    }
+                </style>
+              </head>
+              <body>
+                <div class="center">
+                    <div class="first">Tracker Stats</div>
+                    <div class="first">There are ${stats.torrents} torrents, ${stats.activeTorrents} are active.</div>
+                    <div class="first">Connected Peers: ${stats.peersAll}</div>
+                </div>
+                      
+                <div class="center">
+                    <div class="second">Peers Seeding Only: ${stats.peersSeederOnly}</div>
+                    <div class="second">Peers Leeching Only: ${stats.peersLeecherOnly}</div>
+                    <div class="second">Peers Seeding &; Leeching: ${stats.peersSeederAndLeecher}</div>
+                </div>
+                  
+                <div class="center">
+                    <div class="third">IPv4 Peers: ${stats.peersIPv4}</div>
+                    <div class="third">IPv6 Peers: ${stats.peersIPv6}</div>
+                </div>
+                  
+                <div class="center">
+                    <div class="fourth">
+                        <h4>Clients:</h4>
+                        ${printClients(stats.clients)}
+                    </div>
+                </div>
+            </body>
+            </html>
             `.replace(/^\s+/gm, '')) // trim left
           }
         }
