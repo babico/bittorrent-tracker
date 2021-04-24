@@ -8,7 +8,9 @@
 [downloads-url]: https://npmjs.org/package/bittorrent-tracker
 [standard-image]: https://img.shields.io/badge/code_style-standard-brightgreen.svg
 [standard-url]: https://standardjs.com
-#UPDATED STATS INDEX
+
+# UPDATED STATS INDEX #
+
 #### Simple, robust, BitTorrent tracker (client & server) implementation
 
 ![tracker visualization](img/img.png)
