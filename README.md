@@ -42,12 +42,12 @@ Also see [bittorrent-dht](https://www.npmjs.com/package/bittorrent-dht).
 
 ### Tracker stats
 
-![Screenshot](img/trackerStats.png)
+![Screenshot](https://babico.s-ul.eu/10VVv0sn)
 
 ## install
 
-```
-npm install bittorrent-tracker
+```sh
+npm install https://github.com/babico/bittorrent-tracker.git --save
 ```
 
 ## usage
@@ -247,7 +247,7 @@ Client.scrape({ announce: announceUrl, infoHash: [ infoHash1, infoHash2 ]}, func
 Install `bittorrent-tracker` globally:
 
 ```sh
-$ npm install -g bittorrent-tracker
+$ npm install -g https://github.com/babico/bittorrent-tracker.git --save
 ```
 
 Easily start a tracker server:
