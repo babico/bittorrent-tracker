@@ -24,6 +24,7 @@ const WebSocketTracker = require('./lib/client/websocket-tracker')
  * @param {number} opts.rtcConfig                RTCPeerConnection configuration object
  * @param {number} opts.userAgent                User-Agent header for http requests
  * @param {number} opts.wrtc                     custom webrtc impl (useful in node.js)
+ * @param {object} opts.proxyOpts                proxy options (useful in node.js)
  */
 class Client extends EventEmitter {
   constructor (opts = {}) {
@@ -54,6 +55,7 @@ class Client extends EventEmitter {
     this._getAnnounceOpts = opts.getAnnounceOpts
     this._rtcConfig = opts.rtcConfig
     this._userAgent = opts.userAgent
+    this._proxyOpts = opts.proxyOpts
 
     // Support lazy 'wrtc' module initialization
     // See: https://github.com/webtorrent/webtorrent-hybrid/issues/46
@@ -86,7 +88,7 @@ class Client extends EventEmitter {
       .map(announceUrl => {
         let parsedUrl
         try {
-          parsedUrl = new URL(announceUrl)
+          parsedUrl = common.parseUrl(announceUrl)
         } catch (err) {
           nextTickWarn(new Error(`Invalid tracker URL: ${announceUrl}`))
           return null
@@ -281,9 +283,7 @@ Client.scrape = (opts, cb) => {
   })
 
   opts.infoHash = Array.isArray(opts.infoHash)
-    ? opts.infoHash.map(infoHash => {
-        return Buffer.from(infoHash, 'hex')
-      })
+    ? opts.infoHash.map(infoHash => Buffer.from(infoHash, 'hex'))
     : Buffer.from(opts.infoHash, 'hex')
   client.scrape({ infoHash: opts.infoHash })
   return client
