@@ -39,7 +39,7 @@ class Server extends EventEmitter {
 
     this.intervalMs = opts.interval
       ? opts.interval
-      : 10 * 60 * 1000 // 10 min
+      : 30 * 60 * 1000 // 10 min
 
     this._trustProxy = !!opts.trustProxy
     if (typeof opts.filter === 'function') this._filter = opts.filter
