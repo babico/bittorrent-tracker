@@ -1,7 +1,7 @@
 {
   "name": "bittorrent-tracker",
   "description": "Simple, robust, BitTorrent tracker (client & server) implementation",
-  "version": "9.18.3",
+  "version": "9.18.4",
   "author": {
     "name": "WebTorrent LLC",
     "email": "feross@webtorrent.io",
@@ -55,7 +55,7 @@
     "magnet-uri": "6.2.0",
     "semantic-release": "18.0.1",
     "standard": "*",
-    "tape": "5.4.1",
+    "tape": "5.5.2",
     "webtorrent-fixtures": "1.7.5",
     "wrtc": "0.4.7"
   },
