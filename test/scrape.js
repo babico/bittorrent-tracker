@@ -1,16 +1,16 @@
-const bencode = require('bencode')
-const Client = require('../')
-const common = require('./common')
-const commonLib = require('../lib/common')
-const commonTest = require('./common')
-const fixtures = require('webtorrent-fixtures')
-const get = require('simple-get')
-const test = require('tape')
+import bencode from 'bencode'
+import Client from '../index.js'
+import common from './common.js'
+import commonLib from '../lib/common.js'
+import fixtures from 'webtorrent-fixtures'
+import get from 'simple-get'
+import test from 'tape'
+import { hex2bin } from 'uint8-util'
 
 const peerId = Buffer.from('01234567890123456789')
 
 function testSingle (t, serverType) {
-  commonTest.createServer(t, serverType, (server, announceUrl) => {
+  common.createServer(t, serverType, (server, announceUrl) => {
     const client = new Client({
       infoHash: fixtures.leaves.parsedTorrent.infoHash,
       announce: announceUrl,
@@ -52,7 +52,7 @@ test('ws: single info_hash scrape', t => {
 })
 
 function clientScrapeStatic (t, serverType) {
-  commonTest.createServer(t, serverType, (server, announceUrl) => {
+  common.createServer(t, serverType, (server, announceUrl) => {
     const client = Client.scrape({
       announce: announceUrl,
       infoHash: fixtures.leaves.parsedTorrent.infoHash,
@@ -116,7 +116,7 @@ function clientScrapeMulti (t, serverType) {
   const infoHash1 = fixtures.leaves.parsedTorrent.infoHash
   const infoHash2 = fixtures.alice.parsedTorrent.infoHash
 
-  commonTest.createServer(t, serverType, (server, announceUrl) => {
+  common.createServer(t, serverType, (server, announceUrl) => {
     Client.scrape({
       infoHash: [infoHash1, infoHash2],
       announce: announceUrl
@@ -153,10 +153,10 @@ test('udp: MULTI scrape using Client.scrape static method', t => {
 test('server: multiple info_hash scrape (manual http request)', t => {
   t.plan(13)
 
-  const binaryInfoHash1 = commonLib.hexToBinary(fixtures.leaves.parsedTorrent.infoHash)
-  const binaryInfoHash2 = commonLib.hexToBinary(fixtures.alice.parsedTorrent.infoHash)
+  const binaryInfoHash1 = hex2bin(fixtures.leaves.parsedTorrent.infoHash)
+  const binaryInfoHash2 = hex2bin(fixtures.alice.parsedTorrent.infoHash)
 
-  commonTest.createServer(t, 'http', (server, announceUrl) => {
+  common.createServer(t, 'http', (server, announceUrl) => {
     const scrapeUrl = announceUrl.replace('/announce', '/scrape')
 
     const url = `${scrapeUrl}?${commonLib.querystringStringify({
@@ -190,9 +190,9 @@ test('server: multiple info_hash scrape (manual http request)', t => {
 test('server: all info_hash scrape (manual http request)', t => {
   t.plan(10)
 
-  const binaryInfoHash = commonLib.hexToBinary(fixtures.leaves.parsedTorrent.infoHash)
+  const binaryInfoHash = hex2bin(fixtures.leaves.parsedTorrent.infoHash)
 
-  commonTest.createServer(t, 'http', (server, announceUrl) => {
+  common.createServer(t, 'http', (server, announceUrl) => {
     const scrapeUrl = announceUrl.replace('/announce', '/scrape')
 
     // announce a torrent to the tracker

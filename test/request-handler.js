@@ -1,8 +1,8 @@
-const Client = require('../')
-const common = require('./common')
-const fixtures = require('webtorrent-fixtures')
-const test = require('tape')
-const Server = require('../server')
+import Client from '../index.js'
+import common from './common.js'
+import fixtures from 'webtorrent-fixtures'
+import test from 'tape'
+import Server from '../server.js'
 
 const peerId = Buffer.from('01234567890123456789')
 
@@ -47,7 +47,7 @@ function testRequestHandler (t, serverType) {
 
     client1.once('update', data => {
       t.equal(data.complete, 246)
-      t.equal(data.extraData.toString(), 'hi')
+      t.equal(Buffer.from(data.extraData).toString(), 'hi')
 
       client1.destroy(() => {
         t.pass('client1 destroyed')

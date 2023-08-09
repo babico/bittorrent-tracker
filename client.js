@@ -1,14 +1,17 @@
-const debug = require('debug')('bittorrent-tracker:client')
-const EventEmitter = require('events')
-const once = require('once')
-const parallel = require('run-parallel')
-const Peer = require('simple-peer')
-const queueMicrotask = require('queue-microtask')
+import Debug from 'debug'
+import EventEmitter from 'events'
+import once from 'once'
+import parallel from 'run-parallel'
+import Peer from '@thaunknown/simple-peer/lite.js'
+import queueMicrotask from 'queue-microtask'
+import { hex2arr, hex2bin, text2arr, arr2hex, arr2text } from 'uint8-util'
 
-const common = require('./lib/common')
-const HTTPTracker = require('./lib/client/http-tracker') // empty object in browser
-const UDPTracker = require('./lib/client/udp-tracker') // empty object in browser
-const WebSocketTracker = require('./lib/client/websocket-tracker')
+import common from './lib/common.js'
+import HTTPTracker from './lib/client/http-tracker.js' // empty object in browser
+import UDPTracker from './lib/client/udp-tracker.js' // empty object in browser
+import WebSocketTracker from './lib/client/websocket-tracker.js'
+
+const debug = Debug('bittorrent-tracker:client')
 
 /**
  * BitTorrent tracker client.
@@ -16,8 +19,8 @@ const WebSocketTracker = require('./lib/client/websocket-tracker')
  * Find torrent peers, to help a torrent client participate in a torrent swarm.
  *
  * @param {Object} opts                          options object
- * @param {string|Buffer} opts.infoHash          torrent info hash
- * @param {string|Buffer} opts.peerId            peer id
+ * @param {string|Uint8Array} opts.infoHash          torrent info hash
+ * @param {string|Uint8Array} opts.peerId            peer id
  * @param {string|Array.<string>} opts.announce  announce
  * @param {number} opts.port                     torrent client listening port
  * @param {function} opts.getAnnounceOpts        callback to provide data to tracker
@@ -37,15 +40,15 @@ class Client extends EventEmitter {
 
     this.peerId = typeof opts.peerId === 'string'
       ? opts.peerId
-      : opts.peerId.toString('hex')
-    this._peerIdBuffer = Buffer.from(this.peerId, 'hex')
-    this._peerIdBinary = this._peerIdBuffer.toString('binary')
+      : arr2hex(opts.peerId)
+    this._peerIdBuffer = hex2arr(this.peerId)
+    this._peerIdBinary = hex2bin(this.peerId)
 
     this.infoHash = typeof opts.infoHash === 'string'
       ? opts.infoHash.toLowerCase()
-      : opts.infoHash.toString('hex')
-    this._infoHashBuffer = Buffer.from(this.infoHash, 'hex')
-    this._infoHashBinary = this._infoHashBuffer.toString('binary')
+      : arr2hex(opts.infoHash)
+    this._infoHashBuffer = hex2arr(this.infoHash)
+    this._infoHashBinary = hex2bin(this.infoHash)
 
     debug('new client %s', this.infoHash)
 
@@ -67,7 +70,7 @@ class Client extends EventEmitter {
 
     // Remove trailing slash from trackers to catch duplicates
     announce = announce.map(announceUrl => {
-      announceUrl = announceUrl.toString()
+      if (ArrayBuffer.isView(announceUrl)) announceUrl = arr2text(announceUrl)
       if (announceUrl[announceUrl.length - 1] === '/') {
         announceUrl = announceUrl.substring(0, announceUrl.length - 1)
       }
@@ -258,7 +261,7 @@ Client.scrape = (opts, cb) => {
 
   const clientOpts = Object.assign({}, opts, {
     infoHash: Array.isArray(opts.infoHash) ? opts.infoHash[0] : opts.infoHash,
-    peerId: Buffer.from('01234567890123456789'), // dummy value
+    peerId: text2arr('01234567890123456789'), // dummy value
     port: 6881 // dummy value
   })
 
@@ -282,11 +285,8 @@ Client.scrape = (opts, cb) => {
     }
   })
 
-  opts.infoHash = Array.isArray(opts.infoHash)
-    ? opts.infoHash.map(infoHash => Buffer.from(infoHash, 'hex'))
-    : Buffer.from(opts.infoHash, 'hex')
   client.scrape({ infoHash: opts.infoHash })
   return client
 }
 
-module.exports = Client
+export default Client

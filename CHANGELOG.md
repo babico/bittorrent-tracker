@@ -1,3 +1,125 @@
+## [10.0.12](https://github.com/webtorrent/bittorrent-tracker/compare/v10.0.11...v10.0.12) (2023-08-09)
+
+
+### Bug Fixes
+
+* **deps:** update dependency bencode to v4 ([#487](https://github.com/webtorrent/bittorrent-tracker/issues/487)) ([aeccf9c](https://github.com/webtorrent/bittorrent-tracker/commit/aeccf9c1c4b9115fd23b4fe1a0ab990b5add0f17))
+
+## [10.0.11](https://github.com/webtorrent/bittorrent-tracker/compare/v10.0.10...v10.0.11) (2023-08-01)
+
+
+### Bug Fixes
+
+* mangled scrape infohashes ([#486](https://github.com/webtorrent/bittorrent-tracker/issues/486)) ([11cce83](https://github.com/webtorrent/bittorrent-tracker/commit/11cce83ddd858813f5684da8a116de4bee6e518b))
+
+## [10.0.10](https://github.com/webtorrent/bittorrent-tracker/compare/v10.0.9...v10.0.10) (2023-06-16)
+
+
+### Performance Improvements
+
+* use simple-peer/lite ([#475](https://github.com/webtorrent/bittorrent-tracker/issues/475)) ([5b8db06](https://github.com/webtorrent/bittorrent-tracker/commit/5b8db067e48cc81796728ff538d7ff6efafc59b8))
+
+## [10.0.9](https://github.com/webtorrent/bittorrent-tracker/compare/v10.0.8...v10.0.9) (2023-06-16)
+
+
+### Performance Improvements
+
+* use peer/lite ([#474](https://github.com/webtorrent/bittorrent-tracker/issues/474)) ([7c845f0](https://github.com/webtorrent/bittorrent-tracker/commit/7c845f030d07b1bf7060ab880b790ee85a8c7ac0))
+
+## [10.0.8](https://github.com/webtorrent/bittorrent-tracker/compare/v10.0.7...v10.0.8) (2023-06-07)
+
+
+### Bug Fixes
+
+* bigInt ([#472](https://github.com/webtorrent/bittorrent-tracker/issues/472)) ([d7061f7](https://github.com/webtorrent/bittorrent-tracker/commit/d7061f73b2ebff072e064971a5960749a7335bae))
+
+## [10.0.7](https://github.com/webtorrent/bittorrent-tracker/compare/v10.0.6...v10.0.7) (2023-06-05)
+
+
+### Bug Fixes
+
+* imports ([#471](https://github.com/webtorrent/bittorrent-tracker/issues/471)) ([a12022a](https://github.com/webtorrent/bittorrent-tracker/commit/a12022ac2c81d7fa3ecb81163852161e64199cf4))
+
+## [10.0.6](https://github.com/webtorrent/bittorrent-tracker/compare/v10.0.5...v10.0.6) (2023-05-27)
+
+
+### Bug Fixes
+
+* replace simple-peer with maintained one ([#466](https://github.com/webtorrent/bittorrent-tracker/issues/466)) ([3b2dedb](https://github.com/webtorrent/bittorrent-tracker/commit/3b2dedb4151615831ca12d3d0a830354b1c04e68))
+
+## [10.0.5](https://github.com/webtorrent/bittorrent-tracker/compare/v10.0.4...v10.0.5) (2023-05-27)
+
+
+### Bug Fixes
+
+* only stringify views ([#467](https://github.com/webtorrent/bittorrent-tracker/issues/467)) ([52f5502](https://github.com/webtorrent/bittorrent-tracker/commit/52f55020f38894e4d45e12c87184540d8b0acad3))
+
+## [10.0.4](https://github.com/webtorrent/bittorrent-tracker/compare/v10.0.3...v10.0.4) (2023-05-26)
+
+
+### Bug Fixes
+
+* drop buffer ([#465](https://github.com/webtorrent/bittorrent-tracker/issues/465)) ([c99eb89](https://github.com/webtorrent/bittorrent-tracker/commit/c99eb892088ef3c67ea5bf014dfdd86799251a7e))
+
+## [10.0.3](https://github.com/webtorrent/bittorrent-tracker/compare/v10.0.2...v10.0.3) (2023-05-25)
+
+
+### Performance Improvements
+
+* replace simple websocket with maintained one ([#464](https://github.com/webtorrent/bittorrent-tracker/issues/464)) ([3f01c29](https://github.com/webtorrent/bittorrent-tracker/commit/3f01c29122efd726d805673da82f43ce5592b793))
+
+## [10.0.2](https://github.com/webtorrent/bittorrent-tracker/compare/v10.0.1...v10.0.2) (2023-02-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ws to v8 ([#448](https://github.com/webtorrent/bittorrent-tracker/issues/448)) ([2209d4f](https://github.com/webtorrent/bittorrent-tracker/commit/2209d4f21bdee10e575c1728c3accf7bd34380c9)), closes [#449](https://github.com/webtorrent/bittorrent-tracker/issues/449)
+
+## [10.0.1](https://github.com/webtorrent/bittorrent-tracker/compare/v10.0.0...v10.0.1) (2022-12-07)
+
+
+### Bug Fixes
+
+* **deps:** update dependency bencode to v3 ([#434](https://github.com/webtorrent/bittorrent-tracker/issues/434)) [skip ci] ([926ceee](https://github.com/webtorrent/bittorrent-tracker/commit/926ceee0bac6dfe49877566aaa3cf645689492d1))
+* **deps:** update dependency string2compact to v2 ([#437](https://github.com/webtorrent/bittorrent-tracker/issues/437)) ([9be843c](https://github.com/webtorrent/bittorrent-tracker/commit/9be843c5e46ac2ab518187bf0d348e1e69e8633d))
+
+# [10.0.0](https://github.com/webtorrent/bittorrent-tracker/compare/v9.19.0...v10.0.0) (2022-12-05)
+
+
+### Features
+
+* esm ([#431](https://github.com/webtorrent/bittorrent-tracker/issues/431)) ([e6d3189](https://github.com/webtorrent/bittorrent-tracker/commit/e6d3189edf1a170197a799b97d84c632692b394f))
+
+
+### BREAKING CHANGES
+
+* ESM only
+
+* feat: esm
+
+* fix: linter oops
+
+# [9.19.0](https://github.com/webtorrent/bittorrent-tracker/compare/v9.18.6...v9.19.0) (2022-06-01)
+
+
+### Features
+
+* **events:** Support of `paused` client event ([#411](https://github.com/webtorrent/bittorrent-tracker/issues/411)) ([ef76b3f](https://github.com/webtorrent/bittorrent-tracker/commit/ef76b3f3b6beee87f57d74addd0ca2ef2c517b6d))
+
+## [9.18.6](https://github.com/webtorrent/bittorrent-tracker/compare/v9.18.5...v9.18.6) (2022-05-11)
+
+
+### Bug Fixes
+
+* revert [#420](https://github.com/webtorrent/bittorrent-tracker/issues/420) ([8d54938](https://github.com/webtorrent/bittorrent-tracker/commit/8d54938f164347d57a7991268d191e44b752de7f))
+
+## [9.18.5](https://github.com/webtorrent/bittorrent-tracker/compare/v9.18.4...v9.18.5) (2022-03-25)
+
+
+### Bug Fixes
+
+* connection leaks ([#420](https://github.com/webtorrent/bittorrent-tracker/issues/420)) ([f7928cf](https://github.com/webtorrent/bittorrent-tracker/commit/f7928cfcc646cd95556549b64e61228892314682))
+
 ## [9.18.4](https://github.com/webtorrent/bittorrent-tracker/compare/v9.18.3...v9.18.4) (2022-03-06)
 
 
