@@ -331,25 +331,25 @@ class Server extends EventEmitter {
               <body>
                 <div class="center">
                     <div class="first">Tracker Stats</div>
-                    <div class="first">There are ${stats.torrents} torrents, ${stats.activeTorrents} are active.</div>
-                    <div class="first">Connected Peers: ${stats.peersAll}</div>
+                    <div class="first">There are <div id="torrents">${stats.torrents}</div> torrents, <div id="activeTorrents">${stats.activeTorrents}</div> are active.</div>
+                    <div class="first">Connected Peers: <div id="peersAll">${stats.peersAll}</div></div>
                 </div>
                       
                 <div class="center">
-                    <div class="second">Peers Seeding Only: ${stats.peersSeederOnly}</div>
-                    <div class="second">Peers Leeching Only: ${stats.peersLeecherOnly}</div>
-                    <div class="second">Peers Seeding & Leeching: ${stats.peersSeederAndLeecher}</div>
+                    <div class="second">Peers Seeding Only: <div id="peersSeederOnly">${stats.peersSeederOnly}</div></div>
+                    <div class="second">Peers Leeching Only: <div id="peersLeecherOnly">${stats.peersLeecherOnly}</div></div>
+                    <div class="second">Peers Seeding & Leeching: <div id="peersSeederAndLeecher">${stats.peersSeederAndLeecher}</div></div>
                 </div>
                   
                 <div class="center">
-                    <div class="third">IPv4 Peers: ${stats.peersIPv4}</div>
-                    <div class="third">IPv6 Peers: ${stats.peersIPv6}</div>
+                    <div class="third">IPv4 Peers: <div id="peersIPv4">${stats.peersIPv4}</div></div>
+                    <div class="third">IPv6 Peers: <div id="peersIPv6">${stats.peersIPv6}</div></div>
                 </div>
                   
                 <div class="center">
                     <div class="fourth">
                         <h4>Clients:</h4>
-                        ${printClients(stats.clients)}
+                        <div id="clients">${printClients(stats.clients)}</div>
                     </div>
                 </div>
             </body>

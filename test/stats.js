@@ -3,29 +3,23 @@ import commonTest from './common.js'
 import fixtures from 'webtorrent-fixtures'
 import get from 'simple-get'
 import test from 'tape'
+import jsdom from 'jsdom'
 
 const peerId = Buffer.from('-WW0091-4ea5886ce160')
 const unknownPeerId = Buffer.from('01234567890123456789')
 
 function parseHtml (html) {
-  const extractValue = /[^v^h](\d+)/
-  const array = html.replace('torrents', '\n').split('\n').filter(line => line && line.trim().length > 0).map(line => {
-    const a = extractValue.exec(line)
-    if (a) {
-      return parseInt(a[1])
-    }
-    return null
-  })
-  let i = 0
+  const dom = new jsdom.JSDOM(html)
+
   return {
-    torrents: array[i++],
-    activeTorrents: array[i++],
-    peersAll: array[i++],
-    peersSeederOnly: array[i++],
-    peersLeecherOnly: array[i++],
-    peersSeederAndLeecher: array[i++],
-    peersIPv4: array[i++],
-    peersIPv6: array[i]
+    torrents: parseInt(dom.window.document.getElementById('torrents').textContent),
+    activeTorrents: parseInt(dom.window.document.getElementById('activeTorrents').textContent),
+    peersAll: parseInt(dom.window.document.getElementById('peersAll').textContent),
+    peersSeederOnly: parseInt(dom.window.document.getElementById('peersSeederOnly').textContent),
+    peersLeecherOnly: parseInt(dom.window.document.getElementById('peersLeecherOnly').textContent),
+    peersSeederAndLeecher: parseInt(dom.window.document.getElementById('peersSeederAndLeecher').textContent),
+    peersIPv4: parseInt(dom.window.document.getElementById('peersIPv4').textContent),
+    peersIPv6: parseInt(dom.window.document.getElementById('peersIPv6').textContent)
   }
 }
 
