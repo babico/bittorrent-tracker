@@ -1,3 +1,39 @@
+## [11.0.2](https://github.com/webtorrent/bittorrent-tracker/compare/v11.0.1...v11.0.2) (2024-03-12)
+
+
+### Bug Fixes
+
+* **parse-http:** ignore announcements from peers with invalid announcement ports. ([#513](https://github.com/webtorrent/bittorrent-tracker/issues/513)) ([fe75272](https://github.com/webtorrent/bittorrent-tracker/commit/fe75272d51653e626583689081afb0b7aeadb84f))
+
+## [11.0.1](https://github.com/webtorrent/bittorrent-tracker/compare/v11.0.0...v11.0.1) (2024-01-16)
+
+
+### Bug Fixes
+
+* update build badge url ([#506](https://github.com/webtorrent/bittorrent-tracker/issues/506)) ([3f59b58](https://github.com/webtorrent/bittorrent-tracker/commit/3f59b58a020ea8c0926be135471a6666fe8e8b21))
+
+# [11.0.0](https://github.com/webtorrent/bittorrent-tracker/compare/v10.0.12...v11.0.0) (2023-10-31)
+
+
+### Features
+
+* **major:** drop simple-get ([#443](https://github.com/webtorrent/bittorrent-tracker/issues/443)) ([bce64e1](https://github.com/webtorrent/bittorrent-tracker/commit/bce64e155df6ff9fa605898cbf7498bf76188d8b))
+
+
+### BREAKING CHANGES
+
+* **major:** drop simple-get
+
+* perf: drop simple-get
+
+* feat: undici agent and socks
+
+* fix: undici as dev dependency
+
+* feat: require user passed proxy objects for http and ws
+
+* chore: include undici for tests
+
 ## [10.0.12](https://github.com/webtorrent/bittorrent-tracker/compare/v10.0.11...v10.0.12) (2023-08-09)
 
 
